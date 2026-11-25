@@ -1,0 +1,16 @@
+{
+  "id": "codex",
+  "version": "0.1.0",
+  "name": "Codex CLI",
+  "description": "Installs the official standalone Codex CLI package.",
+  "options": {
+    "version": {
+      "type": "string",
+      "default": "latest",
+      "proposals": [
+        "latest"
+      ],
+      "description": "Codex release to install."
+    }
+  }
+}

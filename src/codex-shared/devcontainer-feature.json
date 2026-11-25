@@ -1,0 +1,25 @@
+{
+  "id": "codex-shared",
+  "version": "0.1.0",
+  "name": "Codex Shared State",
+  "description": "Optionally shares Codex authentication and transcript files from the host.",
+  "mounts": [
+    {
+      "source": "${localEnv:HOME}${localEnv:USERPROFILE}/.codex",
+      "target": "/var/lib/codex",
+      "type": "bind"
+    }
+  ],
+  "options": {
+    "shareAuth": {
+      "type": "boolean",
+      "default": false,
+      "description": "Link the host auth.json into the container Codex home."
+    },
+    "shareTranscripts": {
+      "type": "boolean",
+      "default": false,
+      "description": "Link host session transcript directories into the container Codex home."
+    }
+  }
+}
