@@ -2,6 +2,7 @@
   "id": "codex",
   "version": "0.1.0",
   "name": "Codex CLI",
+  "documentationURL": "https://github.com/chrisbraucker/devcontainer-features/tree/main/src/codex",
   "description": "Installs the official standalone Codex CLI package.",
   "mounts": [
     {

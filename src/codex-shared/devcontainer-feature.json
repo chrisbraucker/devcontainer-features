@@ -2,6 +2,7 @@
   "id": "codex-shared",
   "version": "0.1.0",
   "name": "Codex Shared State",
+  "documentationURL": "https://github.com/chrisbraucker/devcontainer-features/tree/main/src/codex-shared",
   "description": "Optionally shares Codex authentication, transcripts, and plugins from the host.",
   "dependsOn": {
     "ghcr.io/devcontainers/features/python:1": {}

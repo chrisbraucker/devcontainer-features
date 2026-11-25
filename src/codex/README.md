@@ -8,12 +8,12 @@ Installs the official standalone Codex CLI package into `/opt/codex`.
 
 ## Example Usage
 
-For a `.devcontainer/devcontainer.json` in this repository, add:
+Add the published Feature to `devcontainer.json`:
 
 ```json
 {
   "features": {
-    "../src/codex": {
+    "ghcr.io/chrisbraucker/devcontainer-features/codex:0.1.0": {
       "version": "latest"
     }
   }
@@ -22,9 +22,9 @@ For a `.devcontainer/devcontainer.json` in this repository, add:
 
 ## Options
 
-Options Id | Description | Type | Default Value
---- | --- | --- | ---
-`version` | Codex release version to install. | string | `latest`
+| Options Id | Description                       | Type   | Default Value |
+|------------|-----------------------------------|--------|---------------|
+| `version`  | Codex release version to install. | string | `latest`      |
 
 An explicit Codex release can be pinned to keep rebuilds reproducible.
 

@@ -8,13 +8,13 @@ Shares selected state from the host's `~/.codex` with the Codex feature.
 
 ## Example Usage
 
-For a `.devcontainer/devcontainer.json` in this repository, add:
+Add both published Features to `devcontainer.json`:
 
 ```json
 {
   "features": {
-    "../src/codex": {},
-    "../src/codex-shared": {
+    "ghcr.io/chrisbraucker/devcontainer-features/codex:0.1.0": {},
+    "ghcr.io/chrisbraucker/devcontainer-features/codex-shared:0.1.0": {
       "shareAuth": false,
       "shareTranscripts": false,
       "sharePlugins": false
@@ -25,11 +25,11 @@ For a `.devcontainer/devcontainer.json` in this repository, add:
 
 ## Options
 
-Options Id | Description | Type | Default Value
---- | --- | --- | ---
-`shareAuth` | Link the host `auth.json` into the container Codex home. | boolean | `false`
-`shareTranscripts` | Link host `sessions/` and `archived_sessions/` directories into the container Codex home. | boolean | `false`
-`sharePlugins` | Link host `plugins/` and copy the host `[plugins.*]` configuration table once. | boolean | `false`
+| Options Id         | Description                                                                               | Type    | Default Value |
+|--------------------|-------------------------------------------------------------------------------------------|---------|---------------|
+| `shareAuth`        | Link the host `auth.json` into the container Codex home.                                  | boolean | `false`       |
+| `shareTranscripts` | Link host `sessions/` and `archived_sessions/` directories into the container Codex home. | boolean | `false`       |
+| `sharePlugins`     | Link host `plugins/` and copy the host `[plugins.*]` configuration table once.            | boolean | `false`       |
 
 ## Behavior and Limitations
 
