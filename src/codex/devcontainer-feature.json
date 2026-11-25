@@ -3,6 +3,13 @@
   "version": "0.1.0",
   "name": "Codex CLI",
   "description": "Installs the official standalone Codex CLI package.",
+  "mounts": [
+    {
+      "source": "codex-home-${devcontainerId}",
+      "target": "/var/lib/codex-home",
+      "type": "volume"
+    }
+  ],
   "options": {
     "version": {
       "type": "string",

@@ -1,17 +1,43 @@
-# Codex CLI
+# Codex CLI (codex)
 
-Installs the official standalone Codex CLI package into /opt/codex.
+Installs the official standalone Codex CLI package into `/opt/codex`.
 
-The feature currently supports Linux x86-64 and ARM64 containers.
+## Feature Version
 
-It uses the matching musl release package, verifies the published SHA-256 checksum, and exposes the CLI as /usr/local/bin/codex.
+`0.1.0`
 
-The complete package stays intact so Codex can find its helper binaries, ripgrep, and Linux sandbox resource.
+## Example Usage
+
+For a `.devcontainer/devcontainer.json` in this repository, add:
+
+```json
+{
+  "features": {
+    "../src/codex": {
+      "version": "latest"
+    }
+  }
+}
+```
 
 ## Options
 
-- version: Codex release version, or latest (default).
+Options Id | Description | Type | Default Value
+--- | --- | --- | ---
+`version` | Codex release version to install. | string | `latest`
 
-An explicit version can be pinned in devcontainer.json to keep rebuilds reproducible.
+An explicit Codex release can be pinned to keep rebuilds reproducible.
 
-The feature does not configure CODEX_HOME; Codex uses the container user's default ~/.codex.
+## OS Support
+
+The feature supports Linux x86-64 and ARM64 containers.
+
+It installs the matching musl release package, verifies the published SHA-256 checksum, and exposes the CLI as `/usr/local/bin/codex`.
+
+The complete package stays intact so Codex can find its helper binaries, ripgrep, and Linux sandbox resource.
+
+The feature mounts a named volume at `/var/lib/codex-home` and links the container user's `~/.codex` to it.
+
+The volume persists Codex data across container rebuilds and is scoped to the Dev Container instance.
+
+The feature assumes Codex uses the default `~/.codex` path; a custom `CODEX_HOME` bypasses this volume.

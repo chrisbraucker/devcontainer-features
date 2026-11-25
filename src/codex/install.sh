@@ -1,6 +1,25 @@
 #!/bin/sh
 set -eu
 
+REMOTE_USER=$_REMOTE_USER
+REMOTE_HOME=$_REMOTE_USER_HOME
+
+mkdir -p /var/lib/codex-home
+chown "$REMOTE_USER" /var/lib/codex-home
+
+codex_home=$REMOTE_HOME/.codex
+if [ -L "$codex_home" ]; then
+  if [ "$(readlink "$codex_home")" != /var/lib/codex-home ]; then
+    echo "Refusing to replace existing Codex home symlink: $codex_home" >&2
+    exit 1
+  fi
+elif [ -e "$codex_home" ]; then
+  echo "Refusing to replace existing Codex home: $codex_home" >&2
+  exit 1
+else
+  ln -s /var/lib/codex-home "$codex_home"
+fi
+
 VERSION=$VERSION
 
 case "$(uname -s)" in

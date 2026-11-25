@@ -2,11 +2,19 @@
   "id": "codex-shared",
   "version": "0.1.0",
   "name": "Codex Shared State",
-  "description": "Optionally shares Codex authentication and transcript files from the host.",
+  "description": "Optionally shares Codex authentication, transcripts, and plugins from the host.",
+  "dependsOn": {
+    "ghcr.io/devcontainers/features/python:1": {}
+  },
+  "installsAfter": ["codex"],
+  "containerEnv": {
+    "CODEX_SHARED_HOST_CODEX_HOME": "${localEnv:HOME}${localEnv:USERPROFILE}/.codex"
+  },
+  "postStartCommand": "/usr/local/lib/codex-shared/codex-shared",
   "mounts": [
     {
       "source": "${localEnv:HOME}${localEnv:USERPROFILE}/.codex",
-      "target": "/var/lib/codex",
+      "target": "/var/lib/codex-host",
       "type": "bind"
     }
   ],
@@ -20,6 +28,11 @@
       "type": "boolean",
       "default": false,
       "description": "Link host session transcript directories into the container Codex home."
+    },
+    "sharePlugins": {
+      "type": "boolean",
+      "default": false,
+      "description": "Link host plugins and copy the host [plugins] configuration table."
     }
   }
 }
